@@ -12,3 +12,6 @@ set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 
 add_subdirectory(external1/glfw)
 target_link_libraries(BattleCity glfw)
+
+add_subdirectory(external1/glad)
+target_link_libraries(${PROJECT_NAME} glad)
