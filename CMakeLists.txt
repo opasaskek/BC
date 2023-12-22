@@ -3,7 +3,13 @@ cmake_minimum_required(VERSION 3.27 FATAL_ERROR)
 set(PROJECT_NAME BattleCity)
 project(${PROJECT_NAME})
 
-add_executable(BattleCity src/main.cpp)
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(${PROJECT_NAME}
+    src/main.cpp
+    src/Renderer/ShaderProgram.cpp
+    src/Renderer/ShaderProgram.h
+)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -11,7 +17,7 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 
 add_subdirectory(external1/glfw)
-target_link_libraries(BattleCity glfw)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
 add_subdirectory(external1/glad)
-target_link_libraries(${PROJECT_NAME} glad)
+target_link_libraries(${PROJECT_NAME} PRIVATE glad)
